@@ -2,6 +2,8 @@
 
 Quality of life improvements for Scoro.
 
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/ndchnnhplckmbdoffgjbdejklomgjffa)](https://chromewebstore.google.com/detail/scoro-ui-refresh-dark-mod/ndchnnhplckmbdoffgjbdejklomgjffa)
+
 ![Scoro UI Refresh](Screenshots/image.png)
 
 ## Before & After
