@@ -1,6 +1,18 @@
 # Scoro UI Refresh & Dark Mode
 
-Quality of life improvements and dark mode for Scoro.
+Quality of life improvements for Scoro.
+
+![Scoro UI Refresh](Screenshots/image.png)
+
+## Before & After
+
+| Before | After |
+|--------|-------|
+| ![Before](Screenshots/image%20(4).png) | ![After](Screenshots/image%20(6).png) |
+
+## Dark Mode
+
+![Dark Mode](Screenshots/image%20(3).png)
 
 ## Features
 
