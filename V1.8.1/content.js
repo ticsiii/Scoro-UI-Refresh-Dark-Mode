@@ -1669,7 +1669,7 @@ function renderRoleTotalsRow(roleTotals, cols) {
   const tr = document.createElement('tr');
   tr.className = 'scoro-ext-role-totals';
   tr.innerHTML = `<td colspan="${cols}" style="padding:10px 14px;font-size:12px;font-family:Inter,sans-serif;background:#f3f0fa;border-top:1px solid #e0d5f0;">
-      <strong style="display:block;margin-bottom:4px;">Szerepkörönként összesítve (teljes ajánlat):</strong>
+      <strong style="display:block;margin-bottom:4px;">Per role (whole offer):</strong>
       ${rowsHtml}
     </td>`;
   return tr;
@@ -1750,8 +1750,8 @@ function injectOfferHourSummaries() {
     const tr = document.createElement('tr');
     tr.className = 'scoro-ext-hour-summary';
     tr.innerHTML = `<td colspan="${cols}" style="padding:4px 14px 5px;font-size:12px;font-family:Inter,sans-serif;background:#fafafa;border-bottom:1px solid #e8e8e8;">
-      <span style="margin-right:18px;color:#e53935;font-weight:600;">🌍 Kiajánlott: ${extHours} h</span>
-      <span style="color:#7b1fa2;font-weight:600;">🏠 Belső: ${intHours} h</span>
+      <span style="margin-right:18px;color:#e53935;font-weight:600;">🌍 External: ${extHours} h</span>
+      <span style="color:#7b1fa2;font-weight:600;">🏠 Internal: ${intHours} h</span>
     </td>`;
     header.insertAdjacentElement('afterend', tr);
   });
@@ -1762,9 +1762,9 @@ function injectOfferHourSummaries() {
     const tr = document.createElement('tr');
     tr.className = 'scoro-ext-grand-total';
     tr.innerHTML = `<td colspan="${cols}" style="padding:8px 14px;font-size:13px;font-family:Inter,sans-serif;background:#fff8e1;border-top:2px solid #ffc107;">
-      <strong style="margin-right:14px;">Teljes ajánlat összesítő:</strong>
-      <span style="margin-right:18px;color:#e53935;font-weight:600;">🌍 Kiajánlott: ${grandExt} h</span>
-      <span style="color:#7b1fa2;font-weight:600;">🏠 Belső: ${grandInt} h</span>
+      <strong style="margin-right:14px;">Grand total:</strong>
+      <span style="margin-right:18px;color:#e53935;font-weight:600;">🌍 External: ${grandExt} h</span>
+      <span style="color:#7b1fa2;font-weight:600;">🏠 Internal: ${grandInt} h</span>
     </td>`;
     totalRow.insertAdjacentElement('afterend', tr);
 
@@ -1956,8 +1956,8 @@ function injectOfferHourSummariesView() {
     const tr = document.createElement('tr');
     tr.className = 'scoro-ext-hour-summary';
     tr.innerHTML = `<td colspan="${cols}" style="padding:4px 14px 5px;font-size:12px;font-family:Inter,sans-serif;background:#fafafa;border-bottom:1px solid #e8e8e8;">
-      <span style="margin-right:18px;color:#e53935;font-weight:600;">🌍 Kiajánlott: ${extHours} h</span>
-      <span style="color:#7b1fa2;font-weight:600;">🏠 Belső: ${intHours} h</span>
+      <span style="margin-right:18px;color:#e53935;font-weight:600;">🌍 External: ${extHours} h</span>
+      <span style="color:#7b1fa2;font-weight:600;">🏠 Internal: ${intHours} h</span>
     </td>`;
     header.insertAdjacentElement('afterend', tr);
   });
@@ -1969,9 +1969,9 @@ function injectOfferHourSummariesView() {
     const tr = document.createElement('tr');
     tr.className = 'scoro-ext-grand-total';
     tr.innerHTML = `<td colspan="${cols}" style="padding:8px 14px;font-size:13px;font-family:Inter,sans-serif;background:#fff8e1;border-top:2px solid #ffc107;">
-      <strong style="margin-right:14px;">Teljes ajánlat összesítő:</strong>
-      <span style="margin-right:18px;color:#e53935;font-weight:600;">🌍 Kiajánlott: ${grandExt} h</span>
-      <span style="color:#7b1fa2;font-weight:600;">🏠 Belső: ${grandInt} h</span>
+      <strong style="margin-right:14px;">Grand total:</strong>
+      <span style="margin-right:18px;color:#e53935;font-weight:600;">🌍 External: ${grandExt} h</span>
+      <span style="color:#7b1fa2;font-weight:600;">🏠 Internal: ${grandInt} h</span>
     </td>`;
     subtotalRow.insertAdjacentElement('beforebegin', tr);
 
