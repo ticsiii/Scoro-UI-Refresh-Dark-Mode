@@ -1661,8 +1661,8 @@ function renderRoleTotalsRow(roleTotals, cols) {
       <div style="display:flex;justify-content:space-between;gap:24px;padding:2px 0;">
         <span>${name}</span>
         <span style="white-space:nowrap;">
-          <span style="margin-right:14px;color:#e53935;font-weight:600;">⏱ ${ext} h</span>
-          <span style="color:#7b1fa2;font-weight:600;">🔒 ${int} h</span>
+          <span style="margin-right:14px;color:#e53935;font-weight:600;">🌍 ${ext} h</span>
+          <span style="color:#7b1fa2;font-weight:600;">🏠 ${int} h</span>
         </span>
       </div>`).join('');
 
@@ -1750,8 +1750,8 @@ function injectOfferHourSummaries() {
     const tr = document.createElement('tr');
     tr.className = 'scoro-ext-hour-summary';
     tr.innerHTML = `<td colspan="${cols}" style="padding:4px 14px 5px;font-size:12px;font-family:Inter,sans-serif;background:#fafafa;border-bottom:1px solid #e8e8e8;">
-      <span style="margin-right:18px;color:#e53935;font-weight:600;">⏱ Kiajánlott: ${extHours} h</span>
-      <span style="color:#7b1fa2;font-weight:600;">🔒 Belső: ${intHours} h</span>
+      <span style="margin-right:18px;color:#e53935;font-weight:600;">🌍 Kiajánlott: ${extHours} h</span>
+      <span style="color:#7b1fa2;font-weight:600;">🏠 Belső: ${intHours} h</span>
     </td>`;
     header.insertAdjacentElement('afterend', tr);
   });
@@ -1763,8 +1763,8 @@ function injectOfferHourSummaries() {
     tr.className = 'scoro-ext-grand-total';
     tr.innerHTML = `<td colspan="${cols}" style="padding:8px 14px;font-size:13px;font-family:Inter,sans-serif;background:#fff8e1;border-top:2px solid #ffc107;">
       <strong style="margin-right:14px;">Teljes ajánlat összesítő:</strong>
-      <span style="margin-right:18px;color:#e53935;font-weight:600;">⏱ Kiajánlott: ${grandExt} h</span>
-      <span style="color:#7b1fa2;font-weight:600;">🔒 Belső: ${grandInt} h</span>
+      <span style="margin-right:18px;color:#e53935;font-weight:600;">🌍 Kiajánlott: ${grandExt} h</span>
+      <span style="color:#7b1fa2;font-weight:600;">🏠 Belső: ${grandInt} h</span>
     </td>`;
     totalRow.insertAdjacentElement('afterend', tr);
 
@@ -1906,8 +1906,18 @@ function injectOfferHourSummariesView() {
       // Product row — role/product name in td[1], qty in td[2], unit in td[3]
       const tds = row.querySelectorAll('td');
       if (tds.length >= 4) {
+        // td[1] holds the role/product name AND, when a description is filled in,
+        // a nested ".secondary-info" div with that description text (view-page
+        // equivalent of the edit page's separate paarotLines[][comment] textarea).
+        // Strip it out first so the description doesn't get glued onto the name.
+        let nameText = '';
+        if (tds[1]) {
+          const nameCell = tds[1].cloneNode(true);
+          nameCell.querySelectorAll('.secondary-info').forEach(el => el.remove());
+          nameText = nameCell.textContent.trim();
+        }
         lastProduct = {
-          name: tds[1]?.textContent?.trim() || '',
+          name: nameText,
           qty: parseOfferNumber(tds[2]?.textContent),
           unit: tds[3]?.textContent?.toLowerCase().trim() || '',
           internalHours: 0
@@ -1946,8 +1956,8 @@ function injectOfferHourSummariesView() {
     const tr = document.createElement('tr');
     tr.className = 'scoro-ext-hour-summary';
     tr.innerHTML = `<td colspan="${cols}" style="padding:4px 14px 5px;font-size:12px;font-family:Inter,sans-serif;background:#fafafa;border-bottom:1px solid #e8e8e8;">
-      <span style="margin-right:18px;color:#e53935;font-weight:600;">⏱ Kiajánlott: ${extHours} h</span>
-      <span style="color:#7b1fa2;font-weight:600;">🔒 Belső: ${intHours} h</span>
+      <span style="margin-right:18px;color:#e53935;font-weight:600;">🌍 Kiajánlott: ${extHours} h</span>
+      <span style="color:#7b1fa2;font-weight:600;">🏠 Belső: ${intHours} h</span>
     </td>`;
     header.insertAdjacentElement('afterend', tr);
   });
@@ -1960,8 +1970,8 @@ function injectOfferHourSummariesView() {
     tr.className = 'scoro-ext-grand-total';
     tr.innerHTML = `<td colspan="${cols}" style="padding:8px 14px;font-size:13px;font-family:Inter,sans-serif;background:#fff8e1;border-top:2px solid #ffc107;">
       <strong style="margin-right:14px;">Teljes ajánlat összesítő:</strong>
-      <span style="margin-right:18px;color:#e53935;font-weight:600;">⏱ Kiajánlott: ${grandExt} h</span>
-      <span style="color:#7b1fa2;font-weight:600;">🔒 Belső: ${grandInt} h</span>
+      <span style="margin-right:18px;color:#e53935;font-weight:600;">🌍 Kiajánlott: ${grandExt} h</span>
+      <span style="color:#7b1fa2;font-weight:600;">🏠 Belső: ${grandInt} h</span>
     </td>`;
     subtotalRow.insertAdjacentElement('beforebegin', tr);
 
