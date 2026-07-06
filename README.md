@@ -27,7 +27,7 @@ Quality of life improvements for Scoro.
 - **Notification Grouping:** Notifications are grouped by task at scoro.com/notifications. Toggleable, with smart loading and an uncapped Regroup button.
 - **Auto-Resizing Comment Field:** The comment input field resizes automatically based on the length of your comment.
 - **Comment Draft:** Your comment draft is saved locally and inserted back into the comment field when you reload the task.
-- **Offer Hour Summaries:** On both the quote edit and view pages, hours are totalled per section and as a grand total — broken down by offered and internal hours.
+- **Offer Hour Summaries:** On both the quote edit and view pages, hours are totalled per section and as a grand total — broken down by offered and internal hours. Summary at the bottom of the page based on roles.
 - **Back to Finances Button:** On quote view pages, a button appears that takes you directly back to the project's finances tab.
 - **Timesheet Future Warning:** Entering time on a future date triggers a warning popup with a "Got it" button or a "Dismiss / Snooze for 10 min" option.
 - **Future Column Dimming:** Future dates on the timesheet are visually dimmed. A toggle button ("Future 👁️ / 🙈") in the View filter lets you turn this on or off.
