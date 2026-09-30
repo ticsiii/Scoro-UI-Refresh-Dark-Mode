@@ -1,0 +1,141 @@
+/**
+ * Scoro UI Refresh — Task Page Layout Stylesheet
+ *
+ * Injected dynamically by content.js (setUiRefresh → setStylesheet) ONLY on
+ * Scoro task detail pages (/tasks/view/...).
+ *
+ * Converts the default single-column task layout into a responsive CSS grid:
+ *   Row 1: Header block (pricing + users) — full width
+ *   Row 2: Description (col 1) | Time entries (col 2)
+ *   Row 3: Comments — full width, centered at 50%
+ *
+ * Also includes:
+ *   - White card styling for light mode (disabled in dark mode via body class)
+ *   - Sticky time entries header
+ *   - Scrollable time entries list (max 400px)
+ *   - Z-index fixes for user dropdown over footer
+ *   - Highcharts transparent background fix
+ */
+
+/* 1. The "Biggest" container */
+.main-mod .page-container__wrapper #pageContainer .page {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  /* Two equal columns */
+  gap: 24px !important;
+}
+
+/* 2. The TOP "Árazás" & "Users" block */
+.page .page-box:has(.header-title-component):has(.related-users-container) {
+  /* Place in Row 1, spanning ALL columns */
+  grid-column: 1 / -1 !important;
+  grid-row: 1 !important;
+}
+
+/* 3. The "Sziasztok" container */
+#pageContainer .page .page-box:has(> .scoro-text-block) {
+  /* Place in Row 2, Column 1 */
+  grid-column: 1 / 2 !important;
+  grid-row: 2 !important;
+  margin-top: 0 !important;
+}
+
+/* 4. The container for Time & Comments */
+#pageContainer .page .page-box:has(.col) {
+  /* This box "disappears," promoting its children */
+  display: contents !important;
+}
+
+/* 5. The "Time" container */
+.page .page-box .col:has(.time-entries-list-block-component) {
+  /* Place in Row 2, Column 2 (next to Sziasztok) */
+  grid-column: 2 / 3 !important;
+  grid-row: 2 !important;
+  margin-top: 0 !important;
+}
+
+/* 6. The "Comment" container */
+.page .page-box .col:has(#js-comment-error-container) {
+  /* Place in Row 3, spanning ALL columns */
+  grid-column: 1 / -1 !important;
+  grid-row: 3 !important;
+
+  /* Center the block */
+  justify-self: center !important;
+
+  /* Adjust width - make it less wide (50% of its original width) */
+  width: 50% !important;
+}
+
+/* 7. FIX for the missing white backgrounds - VISUALS ONLY
+   Apply the white cards ONLY when dark mode is NOT enabled. */
+body:not(.scoro-dark-mode-on) .page .page-box .col:has(.time-entries-list-block-component),
+body:not(.scoro-dark-mode-on) .page .page-box .col:has(#js-comment-error-container),
+body:not(.scoro-dark-mode-on) #pageContainer .page .page-box:has(> .scoro-text-block) {
+  background: #fff !important;
+  padding: 24px !important;
+  border-radius: 8px !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+}
+
+/* 8. RESET width ONLY for the top two blocks */
+.page .page-box .col:has(.time-entries-list-block-component),
+#pageContainer .page .page-box:has(> .scoro-text-block) {
+  width: auto !important;
+  flex-basis: auto !important;
+}
+
+
+/* Match time entries block height with left description block */
+.col.time-entries-cell.js-time-entries-cell {
+  height: 100%;
+}
+
+
+/* Keep time entries header fixed while list scrolls */
+.col.time-entries-cell.js-time-entries-cell thead.js-time-entries-block-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+
+
+
+/* Limit height of time entries block container, scrolling inside */
+/* Limit height of time entries block container, scrolling inside */
+.col.time-entries-cell.js-time-entries-cell .time-entries-list-block-component .scroll-load-list-block {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+
+/* Fixed width for comments/files column in UI refresh */
+.page .page-box .col.comments-files-cell {
+  width: 420px !important;
+  min-width: 700px !important;
+  max-width: 700px !important;
+}
+
+/* 9. FIX for Highcharts background */
+.highcharts-background {
+  fill: transparent !important;
+}
+
+/* 10. Fix z-index for user dropdown to appear above footer */
+.buttonDropdown {
+  z-index: 2147483647 !important;
+  /* Max z-index value */
+}
+
+/* Ensure footer is below the dropdown */
+.time-entry-block-footer {
+  z-index: 0 !important;
+}
+
+/* Optional: Add a highlight style for focused options if needed */
+.selectDropdownOption:focus {
+  background-color: #f0f0f0;
+  outline: none;
+}
